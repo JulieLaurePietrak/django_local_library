@@ -222,3 +222,7 @@ __marimo__/
 
 # Database
 *.sqlite3
+
+
+# added in prep1
+.venv/
