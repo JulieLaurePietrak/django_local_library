@@ -8,7 +8,7 @@
     <h4>Books</h4>
 
     <dl>
-      {% for book in author.book_set.all %}
+      {% for book in author.books.all %}
         <dt><a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{ book.bookinstance_set.count }})</dt>
         <dd>{{ book.summary }}</dd>
       {% endfor %}
