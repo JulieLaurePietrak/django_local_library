@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Add our new application
     'catalog.apps.CatalogConfig',
     'chat',
+    'ninja',
 ]
 
 MIDDLEWARE = [
