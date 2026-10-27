@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 # Create your views here.
 from .models import Book, Author, BookInstance, Genre
+from .forms import BookForm
 
 def index(request):
     """View function for home page of site."""
@@ -156,3 +157,21 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
             return HttpResponseRedirect(
                 reverse("author-delete", kwargs={"pk": self.object.pk})
             )
+
+
+class BookCreate(PermissionRequiredMixin, CreateView):
+    model = Book
+    form_class = BookForm
+    permission_required = 'catalog.add_book'
+
+
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model = Book
+    form_class = BookForm
+    permission_required = 'catalog.change_book'
+
+
+class BookDelete(PermissionRequiredMixin, DeleteView):
+    model = Book
+    success_url = reverse_lazy('books')
+    permission_required = 'catalog.delete_book'
